@@ -1,6 +1,6 @@
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.zip.CRC32;
 
@@ -25,7 +25,7 @@ public class Main {
         // хэш - это контрольная сумма в виде числа типа long
         long checksum = crc32.getValue();
         // выводим наш хэш в шестнадцатеричной форме
-        System.out.println(Long.toHexString(checksum));
+        // System.out.println(Long.toHexString(checksum));
 
         // объект можно использовать повторно, вызвав метод reset()
         crc32.reset();
@@ -33,21 +33,46 @@ public class Main {
         // получаем хэш - это просто число
         checksum = crc32.getValue();
         // пример вывода хэша в 16-ричной системе счисления
-        System.out.println(Long.toHexString(checksum));
+        // System.out.println(Long.toHexString(checksum));
 
         // часть 2. считываем список слов из файла
         // https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt
         // кстати, могу рекомендовать блог автора, пишет про инф. безопасность
         // https://danielmiessler.com/blog/
         // использовать класс Scanner и его методы hasNextLine(), nextLine()
-        File f = new File("10k-most-common.txt");
-        Scanner sc = new Scanner(f); // вместо потока можно передать просто файл
         // тут чтение файла (работаем со сканером как обычно)
+        File f = new File("10k-most-common.txt");
+        try (Scanner sc = new Scanner(f)) { // вместо потока можно передать просто файл
+            // часть 3: подбор пароля. 
+            // через вложенный цикл формируем пароль, считаем его хэш, сравниваем с искомым hash2 0x0BA02B6E1L
+            // если мы нашли такой пароль, выводим его на экран и радуемся
+            // подсказка - если ваш пароль имеет связь с лошадями, вы, скорее всего, угадали
+            while (sc.hasNextLine()) {
+                String partOfPasswd = sc.nextLine();
+                
+                boolean isRightPasswd = false;
 
-        // часть 3: подбор пароля. 
-        // через вложенный цикл формируем пароль, считаем его хэш, сравниваем с искомым hash2 0x0BA02B6E1L
-        // если мы нашли такой пароль, выводим его на экран и радуемся
-        // подсказка - если ваш пароль имеет связь с лошадями, вы, скорее всего, угадали
+                for (int i = 1; i < 10000; ++i) {
+                    StringBuilder passwdBuilder = new StringBuilder(partOfPasswd);
+                    passwdBuilder.append(i);
 
+                    String passwd = passwdBuilder.toString();
+
+                    crc32.reset();
+                    crc32.update(passwd.getBytes());
+
+                    if (Long.toHexString(crc32.getValue()).equals(Long.toHexString(hash2))) {
+                        isRightPasswd = true;
+
+                        System.out.println(passwd);
+                        break;
+                    }
+                }
+
+                if (isRightPasswd) break;
+            }
+	    } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
