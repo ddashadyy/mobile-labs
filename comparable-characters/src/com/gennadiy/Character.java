@@ -11,11 +11,11 @@ public abstract class Character implements Comparable<Character> {
     protected String innateAbility;
     protected AttributeType attributeType;
 
-    public abstract String getName();
-    public abstract int getHealthPoints(); 
-    public abstract int getManaPool();
-    public abstract String getInnateAbility();
-    public abstract AttributeType getAttributeType();
+    public String getName() { return this.name; }
+    public int getHealthPoints() { return this.healthPoints; }
+    public int getManaPool() { return this.manaPool; }
+    public String getInnateAbility() { return this.innateAbility; }
+    public AttributeType getAttributeType() { return this.attributeType; }
 
     public Character(String name, int healthPoints, int manaPool, 
         String innateAbility, AttributeType attributeType) {
