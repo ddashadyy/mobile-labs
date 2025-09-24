@@ -1,8 +1,6 @@
 package com.gennadiy;
 
 
-import com.gennadiy.AttributeType;
-
 public abstract class Character implements Comparable<Character> {
     
     protected String name;

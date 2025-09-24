@@ -1,7 +1,6 @@
 package com.gennadiy;
 
 
-import com.gennadiy.Character;
 
 public class Huskar extends Character {
 

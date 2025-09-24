@@ -1,9 +1,6 @@
 package com.gennadiy;
 
 
-import com.gennadiy.AttributeType;
-import com.gennadiy.Character;
-
 public class Invoker extends Character {
 
     private int moveSpeed;
