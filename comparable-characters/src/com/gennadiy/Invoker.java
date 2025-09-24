@@ -14,7 +14,7 @@ public class Invoker extends Character {
         StringBuilder sBuilder = new StringBuilder();
         switch (combination) {
             case "qqq": sBuilder.append("Cold Snap"); break;
-            case "qqw": sBuilder.append("Ghoust Walk"); break;
+            case "qqw": sBuilder.append("Ghost Walk"); break;
             case "qqe": sBuilder.append("Ice Wall"); break;
             case "www": sBuilder.append("E.M.P"); break;
             case "wwq": sBuilder.append("Tornado"); break;

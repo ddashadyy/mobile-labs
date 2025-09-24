@@ -1,4 +1,5 @@
 *.txt
 *.class
 .idea
+out
 *.iml
