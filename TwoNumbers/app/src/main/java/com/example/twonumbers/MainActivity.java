@@ -1,53 +1,41 @@
 package com.example.twonumbers;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private EditText editTextNumber1, editTextNumber2;
-    private TextView textViewResult;
+    EditText et1, et2;
+    TextView tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editTextNumber1 = findViewById(R.id.editTextNumber1);
-        editTextNumber2 = findViewById(R.id.editTextNumber2);
-
-        Button buttonCalculate = findViewById(R.id.buttonCalculate);
-
-        textViewResult = findViewById(R.id.textViewResult);
-
-        buttonCalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculateSum();
-            }
-        });
+        et1 = findViewById(R.id.editTextNumber1);
+        et2 = findViewById(R.id.editTextNumber2);
+        tvResult = findViewById(R.id.textViewResult);
     }
 
-    private void calculateSum() {
-        String num1Str = editTextNumber1.getText().toString();
-        String num2Str = editTextNumber2.getText().toString();
+    public void onClick(View v) {
+        String n1 = et1.getText().toString();
+        String n2 = et2.getText().toString();
 
-        if (num1Str.isBlank() || num2Str.isBlank()) {
-            Toast.makeText(this, "Введите оба числа!", Toast.LENGTH_SHORT).show();
+        if (n1.isBlank() || n2.isBlank()) {
+            Toast.makeText(
+                this,
+                "Введите числа",
+                Toast.LENGTH_SHORT).show();
             return;
         }
 
-        double num1 = Double.parseDouble(num1Str);
-        double num2 = Double.parseDouble(num2Str);
-
-        double result = num1 + num2;
-
-        textViewResult.setText("Результат: " + result);
+        int num1 = Integer.parseInt(n1);
+        int num2 = Integer.parseInt(n2);
+        String sum = Integer.toString(num1+num2);
+        tvResult.setText(sum);
     }
 }
