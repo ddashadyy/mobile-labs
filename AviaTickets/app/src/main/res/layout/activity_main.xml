@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="@android:drawable/divider_horizontal_dark"
+        android:showDividers="middle"
+        android:dividerPadding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/departure_label"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spinnerDeparture"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:entries="@array/cities_array"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arrival_label"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spinnerArrival"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:entries="@array/cities_array"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/departure_date_label"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextDepartureDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/date_hint"
+            android:inputType="none"
+            android:focusable="false"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arrival_date_label"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextArrivalDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/date_hint"
+            android:inputType="none"
+            android:focusable="false"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/passengers_label"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/adults_label"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/editTextAdults"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="1"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:minHeight="48dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/children_label"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/editTextChildren"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="0"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:minHeight="48dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/infants_label"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/editTextInfants"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="0"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:minHeight="48dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonBuy"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/buy_button_label"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:elevation="2dp"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</ScrollView>
